@@ -1,21 +1,35 @@
-# ai-hardware-overlay
+# 🖥️ ai-hardware-overlay
+
+[![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![License](https://img.shields.io/badge/license-MIT-2ea44f)](LICENSE)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-8957e5?logo=linux&logoColor=white)](#voraussetzungen)
+[![GUI](https://img.shields.io/badge/GUI-PySide6-41CD52?logo=qt&logoColor=white)](https://pypi.org/project/PySide6/)
+[![Telemetry](https://img.shields.io/badge/telemetry-none-success?logo=shield&logoColor=white)](#datenschutz)
+[![Local only](https://img.shields.io/badge/network-localhost--only-informational?logo=wireshark&logoColor=white)](#datenschutz)
+
+[![Ollama](https://img.shields.io/badge/Ollama-supported-black?logo=ollama&logoColor=white)](https://ollama.com/)
+[![LM Studio](https://img.shields.io/badge/LM%20Studio-supported-6E56CF)](https://lmstudio.ai/)
+[![llama.cpp](https://img.shields.io/badge/llama.cpp-supported-8A2BE2)](https://github.com/ggml-org/llama.cpp)
+[![KoboldCpp](https://img.shields.io/badge/KoboldCpp-supported-orange)](https://github.com/LostRuins/koboldcpp)
+[![NVIDIA](https://img.shields.io/badge/NVIDIA-NVML-76B900?logo=nvidia&logoColor=white)](#nvidia-hinweise)
+[![AMD](https://img.shields.io/badge/AMD-rocm--smi%20%2F%20sysfs-ED1C24?logo=amd&logoColor=white)](#amd-hinweise-linux)
 
 Ein kleines, plattformübergreifendes (Windows + Linux) HUD-Overlay, das live
 Hardware-Daten (CPU, RAM, GPU) und lokal geladene KI-Modelle (Ollama / LM Studio
 / llama.cpp / KoboldCpp) als immer im Vordergrund stehendes, rahmenloses und
 halbtransparentes Fenster anzeigt.
 
-**Merkmale:**
+## ✨ Merkmale
 
-- Always-on-top, rahmenlos, halbtransparentes dunkles HUD mit weißer Monospace-Schrift
-- Per linker Maustaste frei verschiebbar (draggable)
-- Rechtsklick-Kontextmenü: **Beenden**, **Transparenz erhöhen**, **Transparenz verringern** sowie Aktualisierungsintervalle **500 ms / 1000 ms / 2000 ms**
-- Fensterposition und Deckkraft werden in `config.json` gespeichert und beim nächsten Start wiederhergestellt
-- Robust: Fehlt ein Tool, Treiber, eine API oder Datei, stürzt die Anwendung **nicht** ab — nicht verfügbare Werte werden als `n/a` angezeigt
-- Keine Administratorrechte, keine Telemetrie, kein Internetzugriff außer auf localhost-APIs
-- Datenabfrage läuft in einem Hintergrund-Thread (`MonitorThread`), die GUI bleibt dadurch reaktionsfähig
+- 🪟 Always-on-top, rahmenlos, halbtransparentes dunkles HUD mit weißer Monospace-Schrift
+- 🖱️ Per linker Maustaste frei verschiebbar (draggable)
+- 📋 Rechtsklick-Kontextmenü: **Beenden**, **Transparenz erhöhen**, **Transparenz verringern** sowie Aktualisierungsintervalle **500 ms / 1000 ms / 2000 ms**
+- 💾 Fensterposition und Deckkraft werden in `config.json` gespeichert und beim nächsten Start wiederhergestellt
+- 🛡️ Robust: Fehlt ein Tool, Treiber, eine API oder Datei, stürzt die Anwendung **nicht** ab — nicht verfügbare Werte werden als `n/a` angezeigt
+- 🔒 Keine Administratorrechte, keine Telemetrie, kein Internetzugriff außer auf localhost-APIs
+- ⚡ Datenabfrage läuft in einem Hintergrund-Thread (`MonitorThread`), die GUI bleibt dadurch reaktionsfähig
 
-## Beispielanzeige
+## 📊 Beispielanzeige
 
 Die Ausgabe im Overlay sieht typischerweise so aus:
 
@@ -56,7 +70,7 @@ Angezeigte Werte:
   der Ollama-API (`/api/ps`) berechnet und nur angezeigt, wenn die Daten
   verfügbar sind (sonst keine Ergänzung).
 
-### Modell-Detailzeile
+### 🔍 Modell-Detailzeile
 
 Unter jedem Modell kann eine zweite, eingerückte Zeile mit weiteren Parametern
 erscheinen. Welche Felder gezeigt werden, steuert der Konfigurationsschlüssel
@@ -76,12 +90,12 @@ Standard ist `["ctx", "quant", "params"]`.
 Mehrere GPUs werden als Liste aufgeführt. Wird keine unterstützte GPU gefunden,
 erscheint `GPU: n/a`. Wird kein Modell gefunden, erscheint `Model: kein Modell erkannt`.
 
-## Voraussetzungen
+## ✅ Voraussetzungen
 
 - **Python 3.10 oder neuer**
 - Betriebssystem: **Windows** oder **Linux**
 
-## Projektstruktur
+## 📁 Projektstruktur
 
 ```
 ai-hardware-overlay/
@@ -115,7 +129,7 @@ ai-hardware-overlay/
 - `monitors/` — System- und GPU-Erkennung/-Überwachung
 - `model_sources/` — Erkennung lokal laufender KI-Modelle aus verschiedenen Quellen
 
-## Installation (Windows)
+## 🪟 Installation (Windows)
 
 ```powershell
 python -m venv .venv
@@ -126,7 +140,7 @@ pip install -r requirements.txt
 > Eine ausführliche Schritt-für-Schritt-Anleitung (inkl. Systembibliotheken und
 > PyInstaller) steht in [INSTALL.md](INSTALL.md).
 
-## Installation (Linux)
+## 🐧 Installation (Linux)
 
 ```bash
 python -m venv .venv
@@ -140,7 +154,7 @@ Pakete in der Art von `libxcb-cursor0` bzw. `xcb-util`-Bibliotheken zu
 installieren, damit PySide6 startet. Welche Pakete genau nötig sind, hängt von
 der Distribution und der bereits installierten Paketbasis ab.
 
-## Start
+## 🚀 Start
 
 ```bash
 python main.py
@@ -149,7 +163,7 @@ python main.py
 Die Konfigurationsdatei `config.json` liegt neben `main.py`. Fensterposition und
 Deckkraft werden beim Schließen dort gespeichert.
 
-## NVIDIA-Hinweise
+## 🟩 NVIDIA-Hinweise
 
 - Für NVIDIA-GPUs wird **NVML** über das Python-Paket **`nvidia-ml-py`** genutzt.
 - Voraussetzung ist ein installierter **NVIDIA-Treiber** (die NVML-Bibliothek ist
@@ -160,7 +174,7 @@ Deckkraft werden beim Schließen dort gespeichert.
 - `nvidia-smi` ist **optional** und wird nur für die GPU-Erkennung
   (`gpu_detector.py`) verwendet, nicht für die Live-Messwerte.
 
-## AMD-Hinweise (Linux)
+## 🔴 AMD-Hinweise (Linux)
 
 - Zuerst wird **`rocm-smi`** verwendet (Erkennung über `shutil.which`) und per
   `subprocess` mit kurzen Timeouts und JSON-Ausgabe aufgerufen:
@@ -179,7 +193,7 @@ Deckkraft werden beim Schließen dort gespeichert.
 - Fehlende Dateien oder fehlende Leserechte werden sauber behandelt (`n/a`).
 - Ohne `rocm-smi` sind über sysfs also nur eingeschränkte Daten verfügbar.
 
-## AMD-Hinweise (Windows)
+## 🪟🔴 AMD-Hinweise (Windows)
 
 - Unter Windows werden AMD-GPUs über **PowerShell/WMI** ermittelt:
   ```
@@ -193,7 +207,7 @@ Deckkraft werden beim Schließen dort gespeichert.
 - Es werden **keine Adminrechte**, **keine externen Downloads** und **keine
   instabilen Hacks** verwendet.
 
-## Wayland / X11 Hinweis
+## 🧩 Wayland / X11 Hinweis
 
 Das Always-on-top-Verhalten des Overlays funktioniert unter **X11 deutlich
 zuverlässiger** als unter **Wayland**. Unter Wayland können Compositor-Richtlinien
@@ -222,7 +236,7 @@ Mögliche Abhilfen:
 - Eine passende **Compositor-Regel** (z. B. in KDE/KWin, um ein Fenster in den
   Vordergrund zu zwingen) einrichten.
 
-## Konfiguration
+## ⚙️ Konfiguration
 
 Die Datei `config.json` liegt neben `main.py` und wird beim Schließen
 aktualisiert.
@@ -242,7 +256,7 @@ aktualisiert.
 | `max_model_name_length` | `60` | Maximale Länge eines angezeigten Modellnamens |
 | `model_detail_fields` | `["ctx", "quant", "params"]` | Felder der optionalen Modell-Detailzeile (siehe oben); leere Liste `[]` schaltet sie ab |
 
-## PyInstaller Build
+## 📦 PyInstaller Build
 
 ### Windows
 
@@ -262,7 +276,7 @@ Die erzeugte `config.json` sollte **neben der ausführbaren Datei** liegen. Sie
 wird dort automatisch erstellt bzw. beim Schließen aktualisiert, sofern der
 Ablageort beschreibbar ist.
 
-## Fehlerbehebung (Troubleshooting)
+## 🛠️ Fehlerbehebung (Troubleshooting)
 
 | Symptom | Mögliche Ursache | Lösung |
 |---|---|---|
@@ -274,7 +288,7 @@ Ablageort beschreibbar ist.
 | Modelle werden nicht angezeigt | Server nicht gestartet / falscher Port / Firewall | Ollama (`localhost:11434`) bzw. LM Studio (`localhost:1234`) starten, Port prüfen |
 | Hohe CPU-Auslastung | Zu kurzes Refresh-Intervall | `refresh_interval_ms` erhöhen (z. B. auf `2000`) |
 
-## Datenschutz
+## 🔒 Datenschutz
 
 - **Keine Telemetrie.** Die Anwendung sendet keinerlei Daten an externe Server.
 - Es werden ausschließlich **lokale** Datenquellen gelesen:
@@ -284,6 +298,6 @@ Ablageort beschreibbar ist.
 - Es besteht **kein Internetzugriff** außer dem Zugriff auf die genannten
   localhost-APIs.
 
-## Lizenz
+## 📄 Lizenz
 
 Veröffentlicht unter der **MIT-Lizenz** — siehe [LICENSE](LICENSE).

@@ -1,9 +1,13 @@
-# Installation
+# 🛠️ Installation
+
+[![Python](https://img.shields.io/badge/python-3.10%2B-3776AB?logo=python&logoColor=white)](https://www.python.org/)
+[![Platform](https://img.shields.io/badge/platform-Windows%20%7C%20Linux-8957e5?logo=linux&logoColor=white)](#1-voraussetzungen)
+[![License](https://img.shields.io/badge/license-MIT-2ea44f)](LICENSE)
 
 Ausführliche Schritt-für-Schritt-Anleitung. Eine Kurzfassung steht im
 [README](README.md).
 
-## 1. Voraussetzungen
+## ✅ 1. Voraussetzungen
 
 - **Python 3.10 oder neuer** (`python --version`)
 - Betriebssystem: **Windows** oder **Linux**
@@ -13,14 +17,14 @@ Ausführliche Schritt-für-Schritt-Anleitung. Eine Kurzfassung steht im
   - laufende lokale KI-Server: **Ollama** (`localhost:11434`) und/oder
     **LM Studio** (`localhost:1234`)
 
-## 2. Repository klonen
+## 📥 2. Repository klonen
 
 ```bash
 git clone git@github.com:sutrap/ai-hardware-overlay.git
 cd ai-hardware-overlay
 ```
 
-## 3. Virtuelle Umgebung anlegen
+## 📦 3. Virtuelle Umgebung anlegen
 
 **Linux / macOS**
 
@@ -36,7 +40,7 @@ python -m venv .venv
 .venv\Scripts\activate
 ```
 
-## 4. Abhängigkeiten installieren
+## 📚 4. Abhängigkeiten installieren
 
 ```bash
 pip install -r requirements.txt
@@ -45,7 +49,7 @@ pip install -r requirements.txt
 Enthalten: `PySide6` (GUI), `psutil` (CPU/RAM/Prozesse), `nvidia-ml-py`
 (NVML) und `requests` (localhost-APIs).
 
-### Systembibliotheken für PySide6 (Linux)
+### 🐧 Systembibliotheken für PySide6 (Linux)
 
 Auf minimalen Distributionen fehlen häufig die von Qt benötigten
 Systembibliotheken. Beispielhaft (Debian/Ubuntu):
@@ -58,7 +62,7 @@ Welche Pakete genau nötig sind, hängt von Distribution und bereits
 installierter Paketbasis ab. Bei einem Importfehler von `PySide6` die
 Fehlermeldung lesen — sie nennt die fehlende Bibliothek.
 
-## 5. Starten
+## 🚀 5. Starten
 
 ```bash
 python main.py
@@ -68,13 +72,13 @@ Beim ersten Start wird `config.json` neben `main.py` angelegt, falls sie noch
 nicht existiert. Fensterposition und Deckkraft werden beim Schließen dort
 gespeichert.
 
-## 6. Bedienung
+## 🖱️ 6. Bedienung
 
 - **Verschieben:** linke Maustaste gedrückt halten und ziehen
 - **Rechtsklick-Kontextmenü:** Beenden, Transparenz erhöhen/verringern,
   Aktualisierungsintervall (500 / 1000 / 2000 ms)
 
-## 7. Optional: eigenständige ausführbare Datei (PyInstaller)
+## 📦 7. Optional: eigenständige ausführbare Datei (PyInstaller)
 
 ```bash
 pip install pyinstaller
@@ -85,7 +89,7 @@ Die erzeugte `config.json` sollte **neben der ausführbaren Datei** liegen; sie
 wird dort automatisch erstellt bzw. aktualisiert, sofern der Ablageort
 beschreibbar ist.
 
-## Fehlerbehebung
+## 🛠️ Fehlerbehebung
 
 Weitere Hinweise zu NVIDIA, AMD, Wayland/X11 und bekannten Symptomen stehen im
 Abschnitt **Troubleshooting** des [README](README.md#fehlerbehebung-troubleshooting).
