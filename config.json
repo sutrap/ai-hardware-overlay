@@ -1,0 +1,14 @@
+{
+  "refresh_interval_ms": 500,
+  "opacity": 0.824,
+  "window_x": 50,
+  "window_y": 50,
+  "font_size": 13,
+  "show_ollama": true,
+  "show_lmstudio": true,
+  "show_llamacpp_processes": true,
+  "show_nvidia": true,
+  "show_amd": true,
+  "max_model_name_length": 60,
+  "model_detail_fields": ["ctx", "quant", "params"]
+}
